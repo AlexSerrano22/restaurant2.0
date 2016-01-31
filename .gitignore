@@ -73,6 +73,7 @@ $RECYCLE.BIN/
 */node_mudules
 */node_mudules/*
 */bower/*
+*/bower_components/*
  
 #  ----- IDEs and editors
 # VIM
