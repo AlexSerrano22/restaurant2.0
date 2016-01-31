@@ -74,7 +74,17 @@ $RECYCLE.BIN/
 */node_mudules/*
 */bower/*
 */bower_components/*
+
+
+#bootstrap
+*/bootstrap/*
+
+#gulp
+*/gulp/*
  
+#jquery
+*/jquery/*
+
 #  ----- IDEs and editors
 # VIM
 # https://github.com/github/gitignore/blob/master/Global/vim.gitignore
