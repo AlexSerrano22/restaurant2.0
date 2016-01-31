@@ -1,0 +1,19 @@
+{
+  "name": "restaurant2.0",
+  "authors": [
+    "AlexSerrano22 <serrano_ayn@hotmail.com>"
+  ],
+  "description": "sistema de control y menu",
+  "main": "index.html",
+  "moduleType": [],
+  "license": "MIT",
+  "homepage": "index.html",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
