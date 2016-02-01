@@ -85,6 +85,9 @@ $RECYCLE.BIN/
 #jquery
 */jquery/*
 
+#jquery
+*/dust/*
+
 #  ----- IDEs and editors
 # VIM
 # https://github.com/github/gitignore/blob/master/Global/vim.gitignore
