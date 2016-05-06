@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Rincon de los Angeles</title>
+	<meta charset="uft-8">
+	<meta name="viewport" content="width=device-width">
+	<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+	<link rel="stylesheet" href="styles/generalStyles.css"/>
+</head>
+<body>
+	<nav class="navbar navbar-default navbar-fixed-top">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#">
+					<img alt="Brand" src="images/restaurant.png">
+				</a>
+			</div>
+			<div>
+				<p class="navbar-text navbar-left">Mesa:</p><div id="table" class="navbar-text navbar-left" type="text" readonly ></div>
+			</div>
+			<div>
+				<p class="navbar-text navbar-left">Peine:</p><div id="comb" class="navbar-text navbar-left" type="text" readonly ></div>
+			</div>
+			<div>
+				<p class="navbar-text navbar-left">Personas:</p><div id="people" class="navbar-text navbar-left" type="text" readonly ></div>
+			</div>
+
+
+			<button type="button" onclick="deleteValue()" class="btn btn-default navbar-btn navbar-right">Cerrar</button>
+		</div>
+	</nav>
+
+	<input type="hidden" id="ordenNumber"/>
+    <div class="col-md-1"></div>
+	<div class="col-md-10">
+		<div id="content"></div>
+	</div>
+	<div class="col-md-1"></div>
+
+	<div>
+
+	</div>
+	<script src="bower_components/jquery/dist/jquery.min.js"></script>
+	<script src="bower_components/jquery.cookie/jquery.cookie.js"></script>
+	<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script src="scripts/gobalService.js"></script>
+	<script src="bower_components/dustjs-linkedin/dist/dust-full.js" type="text/javascript" charset="utf-8"></script>
+	<script src="scripts/helpers.js" type="text/javascript" charset="utf-8"></script>
+	<script src="scripts/globalFunctions.js" type="text/javascript" charset="utf-8"></script>
+	<script>
+		items.getItems().then(function (data) {
+			window.dishes = data;
+			items.getSubMenu().then(function (data) {
+				for (var i in dishes) {
+					window.subMenu = data;
+					//dishes[i].idMenu = data[dishes[i].idSubMenu].idMenu;
+					//dishes[i].nameSubMenu = data[dishes[i].idSubMenu].description;
+				}
+				items.getMenu().then(function (data) {
+					for (var i in dishes) {
+						//dishes[i].nameMenu = data[dishes[i].idMenu].description;
+					}
+					dust.onLoad = function(name, callback) {
+						console.log("load: " + name);
+						$.ajax("./tpl/" + name + ".tpl.html", {
+							success: function(data) {
+								callback(undefined, data);
+							},
+							error: function(jqXHR, textStatus, errorThrown) {
+								callback(textStatus, undefined);
+							}
+						});
+					};
+
+					var t = {
+						"data" : window.dishes,
+						"data1": window.subMenu
+					};
+					dust.render("acordeon", t , function(err, out) {
+						$("#content").html(out);
+					});
+					$('.collapse').collapse();
+					setValue($("#table"),$("#comb"),$("#people"));
+				});
+			});
+		});
+	</script>
+
+</body>
+</html>

@@ -1,0 +1,20 @@
+{#data}
+<div class="col-sm-12 col-md-4 col-md-4">
+    <h3>{id}</h3>
+
+    <div class="col-sm-12 col-md-12 col-lg-12">
+        {#elements}
+        <div class="col-sm-2 col-md-4 col-lg-4" style="padding: .3em">
+            <button data-number="{num}" class="{id} btn btn-primary btn-lg btn-block">
+                <h2>{num}</h2>
+            </button>
+        </div>
+        {/elements}
+        <div class="col-sm-4 col-md-4 col-lg-4" style="padding: .3em">
+            <button class="{id}-delete btn btn-primary btn-lg btn-block">
+                <h2 class="glyphicon glyphicon-erase"></h2>
+            </button>
+        </div>
+    </div>
+</div>
+{/data}

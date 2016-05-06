@@ -1,0 +1,57 @@
+body {
+    padding-top: 5%;
+}
+
+.tables {
+    background: url("../images/table.svg");
+    display: block;
+    text-indent: -9999px;
+    width: 100px;
+    height: 82px;
+    background-size: 100px 82px;
+    text-align: center;
+}
+
+/*Utilities*/
+
+.padding-top-sm{
+    padding-top: 2em;
+}
+.padding-left-sm{
+    padding-left: 2em;
+}
+.padding-bottom-sm{
+    padding-bottom: 2em;
+}
+.padding-right-sm{
+    padding-right: 2em;
+}
+.padding-all-sm{
+    padding: 2em;
+}
+
+.margin-top-sm{
+    margin-top: 2em;
+}
+.margin-left-sm{
+    margin-left: 2em;
+}
+
+.margin-left-md{
+    margin-left: 3em;
+}
+
+.margin-bottom-sm{
+    margin-bottom: 2em;
+}
+.margin-right-sm{
+    margin-right: 2em;
+}
+.margin-all-sm{
+    margin: 2em;
+}
+
+
+.toggled{
+    display: none;
+}

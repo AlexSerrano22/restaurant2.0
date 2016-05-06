@@ -1,0 +1,30 @@
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+
+
+        <ul class="nav nav-tabs" role="tablist" id="heading{idSub}">
+            {#data1}
+            <li class="presentation">
+                <a  role="tab" data-toggle="tab" href="#collapse{idSub}" aria-expanded="true" aria-controls="collapse{idSub}">
+                    <div style="min-width: 100%">  {description} </div>
+                </a>
+            </li>
+            {/data1}
+        </ul>
+    </div>
+
+    <div class="tab-content">
+    {#data1}
+        <div id="collapse{idSub}" role="tabpanel" class="tab-pane"  aria-labelledby="heading{idSub}">
+            <div class="panel-body">
+                {#data}
+                    {@isEquals subM=idSubMenu menu=idSub name=name}
+                        <div class="col-lg-6" style="padding: .3em">
+                            <button onclick="saveElement({idAl});" type="button" id="Element{idAl}" data-id="{idAl}" data-nameA="{name}" data-cost="{cost}"  style="word-break: break-all"  class="btn btn-primary btn-lg btn-block">{name}</button>
+                        </div>
+                    {/isEquals}
+                {/data}
+            </div>
+        </div>
+    {/data1}
+    </div>
+</div>

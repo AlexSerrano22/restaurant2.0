@@ -3,22 +3,29 @@
  */
 
 (function ($, global){
+
     global.items = {};
-//-------------------------------ITEMS----------------------------
+    /*** -----------------------------------------Beging Elements of Menu------------------------------------   */
+//------------------------------- ITEMS ----------------------------
     items.getItems = function(){
-        $.when(
-            $.ajax("./services/getItems.php")
-        ).then(function (data) {
-            global.item = $.parseJSON(data);
-        });
+        return $.when(
+                $.ajax({
+                    type : "GET",
+                    url : "./services/services.php", //"./services/services.php",
+                    data : {service : "100"},
+                    datatype : "json"
+                })).then(function (data) {
+                return $.parseJSON(data);
+            });
     };
 
 
     items.addItems = function(name, cost, subMenu){
         $.when($.ajax({
                 method : "POST",
-                url : "./services/addItems.php",
-                data : {name : name, cost : cost, subMenu : subMenu}
+                url : "./services/services.php", //"./services/services.php", //"./services/addItems.php",
+                data : {service : "200",name : name, cost : cost, subMenu : subMenu},
+                datatype : "json"
             }
         )).then(function (data){
             alert(data);
@@ -28,33 +35,40 @@
     items.updateItems = function(id, name, cost, subMenu) {
         $.when($.ajax({
             method : "POST",
-            url : "./services/updateItems.php",
-            data : {id : id, name: name, cost : cost, subMenu : subMenu}
+            url : "./services/services.php", //"./services/updateItems.php",
+            data : {service : "300",id : id, name: name, cost : cost, subMenu : subMenu},
+            datatype : "json"
         }
         )).then(function(data){
                 alert(data);
             }
         );
-    }
+    };
 
     items.deleteItems = function(id) {
         $.when($.ajax({
                 method : "POST",
-                url : "./services/deleteItems.php",
-                data : {id : id}
+                url : "./services/services.php", //"./services/deleteItems.php",
+                data : {service : "400",id : id},
+                datatype : "json"
             }
         )).then(function(data){
                 alert(data);
             }
         );
-    }
+    };
+    //------------------------------- END ITEMS ----------------------------
 
     //-----------------------------SUBMENU--------------------------------
     items.getSubMenu = function(){
-        $.when(
-            $.ajax("./services/getSubMenu.php")
-        ).then(function (data) {
-                global.item = $.parseJSON(data);
+        return $.when(
+            $.ajax({
+                type : "GET",
+                url : "./services/services.php", //"./services/services.php",
+                data : {service : "101"},
+                datatype : "json"
+            })).then(function (data) {
+                return $.parseJSON(data);
             });
     };
 
@@ -62,8 +76,9 @@
     items.addSubMenu = function(name, cost, subMenu){
         $.when($.ajax({
                 method : "POST",
-                url : "./services/addSubMenu.php",
-                data : {name : name, cost : cost, subMenu : subMenu}
+                url : "./services/services.php", //"./services/addSubMenu.php",
+                data : {service : "201",name : name, cost : cost, subMenu : subMenu},
+                datatype : "json"
             }
         )).then(function (data){
             alert(data);
@@ -73,42 +88,49 @@
     items.updateSubMenu = function(id, name, cost, subMenu) {
         $.when($.ajax({
                 method : "POST",
-                url : "./services/updateSubMenu.php",
-                data : {id : id, name: name, cost : cost, subMenu : subMenu}
+                url : "./services/services.php", //"./services/updateSubMenu.php",
+                data : {service : "301",id : id, name: name, cost : cost, subMenu : subMenu},
+                datatype : "json"
             }
         )).then(function(data){
                 alert(data);
             }
         );
-    }
+    };
 
     items.deleteSubMenu = function(id) {
         $.when($.ajax({
                 method : "POST",
-                url : "./services/deleteSubMenu.php",
-                data : {id : id}
+                url : "./services/services.php", //"./services/deleteSubMenu.php",
+                data : {service : "401",id : id},
+                datatype : "json"
             }
         )).then(function(data){
                 alert(data);
             }
         );
-    }
+    };
+    //-----------------------------END SUBMENU--------------------------------
 
     //----------------------------MENU---------------------------------------------
     items.getMenu = function(){
-        $.when(
-            $.ajax("./services/getMenu.php")
-        ).then(function (data) {
-                global.item = $.parseJSON(data);
+        return $.when(
+            $.ajax({
+                type : "GET",
+                url : "./services/services.php", //"./services/services.php",
+                data : {service : "102"},
+                datatype : "json"
+            })).then(function (data) {
+                return $.parseJSON(data);
             });
     };
-
 
     items.addMenu = function(name, cost, subMenu){
         $.when($.ajax({
                 method : "POST",
-                url : "./services/addMenu.php",
-                data : {name : name, cost : cost, subMenu : subMenu}
+                url : "./services/services.php", //"./services/addMenu.php",
+                data : {service : "202",name : name, cost : cost, subMenu : subMenu},
+                datatype : "json"
             }
         )).then(function (data){
             alert(data);
@@ -118,30 +140,155 @@
     items.updateMenu = function(id, name, cost, subMenu) {
         $.when($.ajax({
                 method : "POST",
-                url : "./services/updateMenu.php",
-                data : {id : id, name: name, cost : cost, subMenu : subMenu}
+                url : "./services/services.php", //"./services/updateMenu.php",
+                data : {service : "302",id : id, name: name, cost : cost, subMenu : subMenu},
+                datatype : "json"
             }
         )).then(function(data){
                 alert(data);
             }
         );
-    }
+    };
 
     items.deleteMenu = function(id) {
         $.when($.ajax({
                 method : "POST",
-                url : "./services/deleteMenu.php",
-                data : {id : id}
+                url : "./services/services.php", //"./services/deleteMenu.php",
+                data : {service : "402",id : id},
+                datatype : "json"
             }
         )).then(function(data){
                 alert(data);
             }
         );
-    }
+    };
+    //----------------------------END MENU---------------------------------------------
 
 
-items.getItems();
+    /*** -----------------------------------------End Elements of Menu------------------------------------   */
+
+    /*** ��������������������������������������������������������������������������������������������������   */
+
+    /*** -----------------------------------------Beging Elements of orden------------------------------------   */
+
+        //------------------------------- ITEMS ----------------------------
+    items.getOrderItems = function(){
+        return $.when(
+            $.ajax({
+                type : "GET",
+                url : "./services/services.php", //"./services/services.php",
+                data : {service : "103"},
+                datatype : "json"
+            })).then(function (data) {
+                return $.parseJSON(data);
+            });
+    };
 
 
+    items.addOrderItems = function(name, cost, subMenu){
+        $.when($.ajax({
+                method : "POST",
+                url : "./services/services.php", //"./services/services.php", //"./services/addItems.php",
+                data : {service : "203",name : name, cost : cost, subMenu : subMenu},
+                datatype : "json"
+            }
+        )).then(function (data){
+            alert(data);
+        });
+    };
+
+    items.updateOrderItems = function(id, name, cost, subMenu) {
+        $.when($.ajax({
+                method : "POST",
+                url : "./services/services.php", //"./services/updateItems.php",
+                data : {service : "303",id : id, name: name, cost : cost, subMenu : subMenu},
+                datatype : "json"
+            }
+        )).then(function(data){
+                alert(data);
+            }
+        );
+    };
+
+    items.deleteOrderItems = function(id) {
+        $.when($.ajax({
+                method : "POST",
+                url : "./services/services.php", //"./services/deleteItems.php",
+                data : {service : "403",id : id},
+                datatype : "json"
+            }
+        )).then(function(data){
+                alert(data);
+            }
+        );
+    };
+    //------------------------------- END ITEMS ----------------------------
+
+    items.createPlaces = function(number){
+            var table=[];
+            var comb = [];
+            var numbers = [];
+            for(var i = 0 ; i<number ; i++){
+                table[i] = {'num' : i};
+                comb[i] = {'num' : i};
+                numbers[i] = {'num' : i};
+            }
+            return [{"id": "Mesas","elements":table },{"id": "Peine","elements":comb },{"id": "Personas","elements":numbers }];
+    };
+
+    /*** -----------------------------------------End Elements of orden------------------------------------   */
+    /*** �����������������������������������������������������������������������������������              ���������������   */
+
+    /*** -----------------------------------------Beging Tables Actives -----------------------------------   */
+
+    items.getTables = function(){
+        return $.when(
+            $.ajax({
+                type : "GET",
+                url : "./services/services.php", //"./services/services.php",
+                data : {service : "104"},
+                datatype : "json"
+            })).then(function (data) {
+            return $.parseJSON(data);
+        });
+    };
+
+    /*** -----------------------------------------End  Tables Actives ------------------------------------   */
+    /*** ��������������������������������������������������������������������������������������������������   */
+
+    /*** -----------------------------------------Start new Order Actions ------------------------------------   */
+    /*** ������������������������������������������������������������������            ��������������������������������   */
+
+    items.exist = function(table, comb){
+        return $.when(
+            $.ajax({
+                type : "GET",
+                url : "./services/services.php", //"./services/services.php",
+                data : {service : "999", table:table, comb:comb},
+                datatype : "json"
+            })).then(function (data) {
+            return $.parseJSON(data);
+        });
+    };
+
+    items.newOrder = function(table, comb, waiter, people){
+        //TODO: Add idOrder to the function
+
+        return $.when(
+            $.ajax({
+                type : "GET",
+                url : "./services/services.php", //"./services/services.php",
+                //TODO: Add idOrder to request
+                data : {service : "901", table:table, comb:comb, waiter:waiter, people:people},
+                datatype : "json"
+            })).then(function (data) {
+            return $.parseJSON(data);
+        });
+    };
+
+    /*** -----------------------------------------Start new Order Actions ------------------------------------   */
+    /*** ������������������������������������������������������������������            ��������������������������������   */
 
 })(jQuery, window);
+
+
