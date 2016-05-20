@@ -271,15 +271,24 @@
         });
     };
 
-    items.newOrder = function(table, comb, waiter, people){
-        //TODO: Add idOrder to the function
-
+    items.newOrder = function(table, comb, waiter, people, idOrder){
         return $.when(
             $.ajax({
                 type : "GET",
                 url : "./services/services.php", //"./services/services.php",
-                //TODO: Add idOrder to request
-                data : {service : "901", table:table, comb:comb, waiter:waiter, people:people},
+                data : {service : "901", table:table, comb:comb, waiter:waiter, people:people, order:idOrder},
+                datatype : "json"
+            })).then(function (data) {
+            return $.parseJSON(data);
+        });
+    };
+
+    items.nextOrder = function(){
+        return $.when(
+            $.ajax({
+                type : "GET",
+                url : "./services/services.php", //"./services/services.php",
+                data : {service : "998"},
                 datatype : "json"
             })).then(function (data) {
             return $.parseJSON(data);

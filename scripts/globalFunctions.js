@@ -40,7 +40,7 @@ function createCokkie(obj){
     }
 }
 
-function setValue(table, comb, people){
+function setValue(table, comb, people, order){
     table.text($.cookie("table"));
     comb.text($.cookie("comb"));
     people.text($.cookie("people"));
@@ -67,8 +67,8 @@ function AllValue(table, comb, people){
                     if(result.exist == true){
                         alert("Esta mesa esta Atendida por: "+result.waiter);
                     }else{
-                        //TODO: Add idOrder to the function parameters
-                        items.newOrder( parseInt(table.val()),  parseInt(comb.val()), waiter,  parseInt(people.val())).then(function(newOrder){
+                        var idOrder = $("#ordenNumber").val();
+                        items.newOrder( parseInt(table.val()),  parseInt(comb.val()), waiter,  parseInt(people.val()), parseInt(idOrder)).then(function(newOrder){
                             console.log(newOrder);
                             if(newOrder.value == true){
                                 obj = [{"id":"idOrder","value":parseInt(newOrder.idOrder)},{"id":"table","value":parseInt(table.val())},{"id":"comb","value":parseInt(comb.val())},{"id":"people","value":parseInt(people.val())}];

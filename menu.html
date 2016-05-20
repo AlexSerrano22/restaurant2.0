@@ -24,13 +24,13 @@
 			<div>
 				<p class="navbar-text navbar-left">Personas:</p><div id="people" class="navbar-text navbar-left" type="text" readonly ></div>
 			</div>
-
+			<div>
+				<p class="navbar-text navbar-left">Orden:</p><div id="ordenNumber" class="navbar-text navbar-left" type="text" readonly ></div>
+			</div>
 
 			<button type="button" onclick="deleteValue()" class="btn btn-default navbar-btn navbar-right">Cerrar</button>
 		</div>
 	</nav>
-
-	<input type="hidden" id="ordenNumber"/>
     <div class="col-md-1"></div>
 	<div class="col-md-10">
 		<div id="content"></div>
@@ -80,7 +80,7 @@
 						$("#content").html(out);
 					});
 					$('.collapse').collapse();
-					setValue($("#table"),$("#comb"),$("#people"));
+					setValue($("#table"),$("#comb"),$("#people"), $("#ordenNumber"));
 				});
 			});
 		});

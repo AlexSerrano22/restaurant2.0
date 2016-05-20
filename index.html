@@ -31,22 +31,23 @@
                     <p class="navbar-text navbar-left">Personas:</p><input id="people" class="navbar-text navbar-left"
                                                                            type="text" readonly/>
                 </div>
-                <button type="button" id="next" class="btn btn-default navbar-btn navbar-right">Menu <span
-                        class="glyphicon glyphicon-th-list"></span></button>
+
             </div>
         </nav>
     </div>
     <div class="row">
         <div class="container">
+            <br>
             <input type="hidden" id="ordenNumber"/>
 
             <div class="row active-tables padding-top-sm">
                 <div class="col-sm-1 col-md-1 col-lg-1"></div>
                 <div class="col-sm-10 col-md-10 col-lg-10">
-                    <div id="active-tables"></div>
-                    <div class="padding-top-sm pull-right">
-                        <button class="btn btn-primary" onclick="numbers()">Nueva Mesa <span class="glyphicon glyphicon-expand"></span></button>
+                    <div class="padding-top-sm pull-right row">
+                        <button class="btn btn-primary" onclick="numbers()">Nueva Mesa <span
+                                class="glyphicon glyphicon-expand"></span></button>
                     </div>
+                    <div id="active-tables" class="row"></div>
 
                 </div>
                 <div class="col-sm-1 col-md-1 col-lg-1"></div>
@@ -54,9 +55,17 @@
             <div class="row numbers toggled">
                 <div class="col-sm-1 col-md-1 col-lg-1"></div>
                 <div class="col-sm-10 col-md-10 col-lg-10">
-                    <div id="content"></div>
-                    <div class="padding-top-sm pull-right">
-                        <button class="btn btn-primary" onclick="numbers()">Cancelar <span class="glyphicon glyphicon-arrow-left"></span></button>
+
+                    <div id="content" class="row"></div>
+                    <div class="row padding-top-sm">
+                        <div class="pull-left">
+                            <button class="btn btn-primary" onclick="numbers()">Cancelar <span
+                                    class="glyphicon glyphicon-arrow-left"></span></button>
+                        </div>
+                        <div class="pull-right">
+                            <button id="next" class="btn btn-primary">Nueva Orden <span
+                                    class="glyphicon glyphicon-th-list"></span></button>
+                        </div>
                     </div>
                 </div>
                 <div class="col-sm-1 col-md-1 col-lg-1"></div>
@@ -74,6 +83,7 @@
 <script src="scripts/helpers.js" type="text/javascript" charset="utf-8"></script>
 <script src="scripts/globalFunctions.js" type="text/javascript" charset="utf-8"></script>
 <script>
+
     $.when(items.createPlaces(10)).then(function (data) {
         var t = {
             "data": data
@@ -109,23 +119,25 @@
     });
 
     function activas() {
+        items.nextOrder().then(function (nextOrder) {
+            $("#ordenNumber").val(nextOrder.Number);
+        });
         setTimeout(function () {
-            if($(".active-tables").is(":visible")){
-            items.getTables().then(function (data) {
-                console.log(data);
-                var t = {
-                    "data": data
-                };
-                dust.render("tables", t, function (err, out) {
-                    $("#active-tables").html(out);
-                });
+            if ($(".active-tables").is(":visible")) {
+                items.getTables().then(function (data) {
+                    console.log(data);
+                    var t = {
+                        "data": data
+                    };
+                    dust.render("tables", t, function (err, out) {
+                        $("#active-tables").html(out);
+                    });
 
-            });
-        }
+                });
+            }
             activas();
         }, 5000);
     }
-
 
 </script>
 </body>
