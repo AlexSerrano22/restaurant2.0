@@ -253,6 +253,18 @@
         });
     };
 
+    items.getWaiters = function(){
+        return $.when(
+            $.ajax({
+                type : "GET",
+                url : "./services/services.php", //"./services/services.php",
+                data : {service : "109"},
+                datatype : "json"
+            })).then(function (data) {
+            return $.parseJSON(data);
+        });
+    };
+
     /*** -----------------------------------------End  Tables Actives ------------------------------------   */
     /*** ��������������������������������������������������������������������������������������������������   */
 

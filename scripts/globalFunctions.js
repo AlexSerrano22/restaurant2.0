@@ -58,7 +58,8 @@ function deleteValue(){
 }
 function AllValue(table, comb, people){
     var obj = [];
-    var waiter="Victor";
+    var waiter=$( "#waiter" ).val();
+    if(waiter.length > 1){
     if (table.val().length > 0 && parseInt(table.val()) > 0 ){
         if(comb.val().length > 0 && parseInt(comb.val()) > 0 ){
             if(people.val().length > 0 && parseInt(people.val()) > 0 ){
@@ -89,6 +90,9 @@ function AllValue(table, comb, people){
         }
     }else{
         alert("Ingresar Numero de Mesa");
+    }
+    }else{
+        alert("Seleccionar un Mesero");
     }
 }
 

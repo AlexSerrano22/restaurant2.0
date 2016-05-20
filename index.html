@@ -116,6 +116,16 @@
             AllValue($("#table"), $("#comb"), $("#people"));
         });
         activas();
+    }).then(function () {
+        $.when(items.getWaiters()).then(function (data) {
+            var t = {
+                "data": data
+            };
+            dust.render("waiters", t, function (err, out) {
+                $("#waiters").html(out);
+            });
+            return data;
+        });
     });
 
     function activas() {
@@ -132,7 +142,6 @@
                     dust.render("tables", t, function (err, out) {
                         $("#active-tables").html(out);
                     });
-
                 });
             }
             activas();

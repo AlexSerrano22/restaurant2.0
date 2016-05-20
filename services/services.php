@@ -24,6 +24,7 @@ if (isset($_GET["service"]) || isset($_POST["service"])) {
     isset($_GET["price"]) ? $price = $_GET["price"] : $price = "";
     isset($_GET["foodID"]) ? $foodID = $_GET["foodID"] : $foodID = "";
     isset($_GET["order"]) ? $order = $_GET["order"] : $order = "";
+    isset($_GET["waiter"]) ? $waiter = $_GET["waiter"] : $waiter = "";
 
 
     switch ($service) {
@@ -74,14 +75,15 @@ if (isset($_GET["service"]) || isset($_POST["service"])) {
             echo '' . json_encode($items) . '';
             break;
         case "103" :
+            //Get Service to obtain the al elements from one order in the data base
             $query = "";
             $result = $mysqli->query($query);
-            $item = array();
+            $elements;
             while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
-                $elements = array();
-                $items[] = $elements;
+                $elements = array(
+                );
             }
-            echo '' . json_encode($items) . '';
+            echo '' . json_encode($elements) . '';
             break;
         case "104" :
             //Get service from all tables tha are in use at the moment in the data base
@@ -94,6 +96,21 @@ if (isset($_GET["service"]) || isset($_POST["service"])) {
                     "peine" => $row["peine"],
                     "mesa" => $row["mesa"],
                     "mesero" => $row["mesero"]
+                );
+                $items[] = $elements;
+            }
+            echo '' . json_encode($items) . '';
+            break;
+        case "109" :
+            //Get Service to obtain the al waiters in the data base
+            $query = "SELECT * FROM mesero";
+            $result = $mysqli->query($query);
+            $items = array(array(
+                "name" =>  ""
+            ));
+            while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
+                $elements = array(
+                    "name" =>  $row["nombre"]
                 );
                 $items[] = $elements;
             }
